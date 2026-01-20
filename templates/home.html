@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="hero-section text-center py-5 bg-primary text-white">
+    <h1>Welcome to Abhilasha Foundation</h1>
+    <p>Making a difference in the community</p>
+</div>
+
+<section class="mission-vision py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Our Mission</h2>
+                <p>To empower communities through education, healthcare, and sustainable development.</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Our Vision</h2>
+                <p>A world where every individual has access to opportunities for a better life.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="events py-5 bg-light">
+    <div class="container">
+        <h2>Upcoming Events</h2>
+        <div class="row">
+            {% for event in events %}
+            <div class="col-md-4">
+                <div class="card">
+                    {% if event.image %}
+                    <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
+                    {% else %}
+                    <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="Event">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <p class="card-text">{{ event.description|truncatechars:100 }}</p>
+                        <p class="card-text"><small class="text-muted">{{ event.date }}</small></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
