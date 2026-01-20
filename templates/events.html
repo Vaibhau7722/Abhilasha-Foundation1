@@ -8,7 +8,7 @@
     {% for event in events %}
     <div class="col-md-4 mb-4">
         <div class="card">
-            <img src="https://source.unsplash.com/featured/?charity&w=300&h=200" class="card-img-top" alt="{{ event.title }}">
+            <img src="{% if event.title == 'Charity Run' %}https://images.unsplash.com/photo-1593113598332-cd288d649433?w=300&h=200&fit=crop{% elif event.title == 'Food Drive' %}https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=300&h=200&fit=crop{% else %}https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop{% endif %}" class="card-img-top" alt="{{ event.title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ event.title }}</h5>
                 <p class="card-text">{{ event.description }}</p>
